@@ -45,15 +45,16 @@ const Oauth_URL = get_Oauth_URL()
 { status: 200, message: 'ok', targetType: 'USER', target: 'YOUR-USER-NAME' }
 ```
 
-## 完成度
+## 完成度（100%）
 ### 已完成🙆‍♂️
 - GET https://notify-bot.line.me/oauth/authorize
 - POST https://notify-bot.line.me/oauth/token
 - GET https://notify-api.line.me/api/status
-
-### 未完成🙅‍♂️
 - POST https://notify-api.line.me/api/notify
 - POST https://notify-api.line.me/api/revoke
+
+
+
 
 
 ## 範例程式
@@ -83,3 +84,48 @@ app.get('/', (req, res) => {
 const port = 3000
 app.listen(port, () => console.log(`Please regist LINE Nofity on : http://localhost:${port}`))
 ````
+
+---
+
+## 發送 notify
+
+對應[官方]((https://notify-bot.line.me/doc/en/))  `POST https://notify-api.line.me/api/notify`
+
+目前只支援傳送訊息（不支援圖片、貼圖）
+
+### sdk.notify(token, message)
+
+回傳值為官方 API 回傳之物件。
+
+範例：
+```
+{ status: 200, message: 'ok' }
+```
+
+## 註銷 token
+
+對應[官方]((https://notify-bot.line.me/doc/en/))  `POST https://notify-api.line.me/api/revoke`
+
+### sdk.revoke_token(token)
+
+回傳值為官方 API 回傳之物件。
+
+範例：
+```
+{ status: 200, message: 'ok' }
+```
+
+## 範例程式
+
+```javascript
+sdk.notify('Fb95yOp0w4qfQfIWG2s7PthRldEgsZD7KHnvBRLadAQ', 'hello').then((body) => {
+	console.log(body)
+})
+```
+
+```javascript
+sdk.revoke_token('Fb95yOp0w4qfQfIWG2s7PthRldEgsZD7KHnvBRLadAQ').then((body) => {
+	console.log(body)
+})
+//若成功，會收到：與「XXX」的連動已解除
+```

@@ -61,6 +61,43 @@ class LINE_Notify_SDK {
 	            }
 	        })
         })
+	}
+	
+	notify(token, message) {
+		return new Promise((reslove, reject) => {
+	        request.post({
+				url: 'https://notify-api.line.me/api/notify',
+				headers: {
+	                Authorization: `Bearer ${token}`
+	            },
+	            form: {
+	                message: message
+	            }
+	        }, function(error, response, body) {
+	            if (!error && response.statusCode === 200) {
+	                reslove(JSON.parse(body))
+	            } else {
+	                reject('[error] in notify()')
+	            }
+	        })
+        })
+	}
+
+    revoke_token(token) {
+        return new Promise((reslove, reject) => {
+            request.post({
+                url: 'https://notify-api.line.me/api/revoke',
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }, function(error, response, body) {
+                if (!error && response.statusCode === 200) {
+                    reslove(JSON.parse(body))
+                } else {
+                    reject('[error] in notify()')
+                }
+            })
+        })
     }
 }
 
