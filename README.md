@@ -3,11 +3,18 @@
 官方尚未提供 Notify SDK，對於開發者來說非常不便。該專案為第三方 Node.js LINE Notify SDK。
 
 官方提供之 API 共有：
-- GET  https://notify-bot.line.me/oauth/authorize
+- GET  https://notify-bot.line.me/oauth/authorize 
+    - sdk.set_Oauth_URL(response_type, scope, state)
 - GET  https://notify-api.line.me/api/status
+    - sdk.get_userinfo_by_token(token)
 - POST https://notify-bot.line.me/oauth/token
+    - sdk.get_token_by_code(client_secret, client_code)
 - POST https://notify-api.line.me/api/notify
+    - sdk.notify(token, message)
 - POST https://notify-api.line.me/api/revoke
+    - sdk.revoke_token(token)
+
+參數型態全部皆為字串。
 
 # 使用說明
 
