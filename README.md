@@ -15,6 +15,7 @@ const sdk = new Notify_SDK(process.env.client_id, process.env.client_secret, pro
 
 ## 設定/取得 認證連結
 
+對應[官方](https://notify-bot.line.me/doc/en/)  `GET https: //notify-bot.line.me/oauth/authorize`
 ### sdk.set_Oauth_URL(response_type, scope, state)
 回傳值為一 `function`，呼叫該 function 可以取得認證連結
 
@@ -23,16 +24,37 @@ const sdk = new Notify_SDK(process.env.client_id, process.env.client_secret, pro
 const get_Oauth_URL = sdk.set_Oauth_URL('code', 'notify', 'im_a_token')
 const Oauth_URL = get_Oauth_URL()
 ```
-詳請請閱讀 [LINE notify doc](https://notify-bot.line.me/doc/en/) 之 `GET https: //notify-bot.line.me/oauth/authorize`
-
 ## 取得用戶 token
+
+對應[官方]((https://notify-bot.line.me/doc/en/))  `POST https://notify-bot.line.me/oauth/token`
 
 ### sdk.get_token_by_code(client_secret, client_code)
 回傳值為一 `Promise`，Promise 回傳值為一 `string`，即用戶 token
 
-## 取得用戶資料
+（`client_code` 從自行架設的 callback URL 取得，文末有範例）
+
+## 取得用戶資料（名稱、群組或個人）
+
+對應[官方]((https://notify-bot.line.me/doc/en/))  `GET https://notify-api.line.me/api/status`
+
 ### sdk.get_userinfo_by_token(token)
-回傳值為一 `Promise`，Promise 回傳值為一 `object`（範例 { status: 200, message: 'ok', targetType: 'USER', target: 'YOUR-USER-NAME' }）
+回傳值為一 `Promise`，Promise 回傳值為一 `object`
+
+範例：
+```
+{ status: 200, message: 'ok', targetType: 'USER', target: 'YOUR-USER-NAME' }
+```
+
+## 完成度
+### 已完成🙆‍♂️
+- GET https://notify-bot.line.me/oauth/authorize
+- POST https://notify-bot.line.me/oauth/token
+- GET https://notify-api.line.me/api/status
+
+### 未完成🙅‍♂️
+- POST https://notify-api.line.me/api/notify
+- POST https://notify-api.line.me/api/revoke
+
 
 ## 範例程式
 
@@ -49,7 +71,6 @@ app.get('/cb', async (req, res) => {
     const client_secret = process.env.client_secret
     const token = await sdk.get_token_by_code(client_secret, client_code)
     const info = await sdk.get_userinfo_by_token(token)
-    //{ status: 200, message: 'ok', targetType: 'USER', target: 'YOUR-USER-NAME' }
     console.log(info, token)
 })
 
