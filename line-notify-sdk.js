@@ -2,16 +2,22 @@ const request = require('request')
 
 class LINE_Notify_SDK {
     constructor(client_id, client_secret, redirect_uri) {
-        if (client_id === undefined || client_secret === undefined || redirect_uri === undefined)
-            throw new Error('The arguments client_id, client_secret, redirect_uri is required.')
-
         this.client_id = client_id
         this.client_secret = client_secret
         this.redirect_uri = redirect_uri
     }
 
-    set_Oauth_URL(response_type, scope, state) {
+    check_args_is_set() {
+        if (this.client_id === undefined || this.client_secret === undefined || this.redirect_uri === undefined)
+            throw new Error('The arguments client_id, client_secret, redirect_uri is required.')
+        else
+            return true
+    }
 
+    set_Oauth_URL(response_type, scope, state) {
+        
+        this.check_args_is_set()
+        
         const get_Oauth_URL = () => {            
             const Oauth_URL = 'https://notify-bot.line.me/oauth/authorize?' + 
 	        'response_type=' + response_type + 
@@ -43,6 +49,9 @@ class LINE_Notify_SDK {
     }
 
     get_token_by_code(client_secret, client_code) {
+
+        this.check_args_is_set()
+        
 	    return new Promise((reslove, reject) => {
 	        request.post({
 	            url: 'https://notify-bot.line.me/oauth/token',
@@ -61,13 +70,13 @@ class LINE_Notify_SDK {
 	            }
 	        })
         })
-	}
+    }
 	
-	notify(token, message) {
-		return new Promise((reslove, reject) => {
+    notify(token, message) {
+        return new Promise((reslove, reject) => {
 	        request.post({
-				url: 'https://notify-api.line.me/api/notify',
-				headers: {
+                url: 'https://notify-api.line.me/api/notify',
+                headers: {
 	                Authorization: `Bearer ${token}`
 	            },
 	            form: {
@@ -81,7 +90,7 @@ class LINE_Notify_SDK {
 	            }
 	        })
         })
-	}
+    }
 
     revoke_token(token) {
         return new Promise((reslove, reject) => {

@@ -1,12 +1,20 @@
 # LINE-Notify-SDK
 
-官方尚未提供 Notify SDK，故自己打造 Node.js 第三方 LINE Notify SDK。
+官方尚未提供 Notify SDK，對於開發者來說非常不便。該專案為第三方 Node.js LINE Notify SDK。
 
-## 使用說明
+官方提供之 API 共有：
+- GET  https://notify-bot.line.me/oauth/authorize
+- GET  https://notify-api.line.me/api/status
+- POST https://notify-bot.line.me/oauth/token
+- POST https://notify-api.line.me/api/notify
+- POST https://notify-api.line.me/api/revoke
+
+# 使用說明
+
+# 取得使用者 token, 使用者名稱 相關 API
 
 ## 初始化
-
-引入模組以及初始化，參數必須填滿
+引入模組以及初始化，參數必須填滿。
 
 ```javascript
 const Notify_SDK = require('./line-notify-sdk')
@@ -45,18 +53,6 @@ const Oauth_URL = get_Oauth_URL()
 { status: 200, message: 'ok', targetType: 'USER', target: 'YOUR-USER-NAME' }
 ```
 
-## 完成度（100%）
-### 已完成🙆‍♂️
-- GET https://notify-bot.line.me/oauth/authorize
-- POST https://notify-bot.line.me/oauth/token
-- GET https://notify-api.line.me/api/status
-- POST https://notify-api.line.me/api/notify
-- POST https://notify-api.line.me/api/revoke
-
-
-
-
-
 ## 範例程式
 
 ```javascript
@@ -85,7 +81,16 @@ const port = 3000
 app.listen(port, () => console.log(`Please regist LINE Nofity on : http://localhost:${port}`))
 ````
 
----
+# 發送 notify, 註銷 token 相關 API
+
+## 初始化
+
+建構子參數可以為空。
+
+```javascript
+const Notify_SDK = require('./line-notify-sdk')
+const sdk = new Notify_SDK()
+```
 
 ## 發送 notify
 
@@ -118,12 +123,11 @@ app.listen(port, () => console.log(`Please regist LINE Nofity on : http://localh
 ## 範例程式
 
 ```javascript
+const Notify_SDK = require('./line-notify-sdk')
+const sdk = new Notify_SDK()
 sdk.notify('Fb95yOp0w4qfQfIWG2s7PthRldEgsZD7KHnvBRLadAQ', 'hello').then((body) => {
 	console.log(body)
 })
-```
-
-```javascript
 sdk.revoke_token('Fb95yOp0w4qfQfIWG2s7PthRldEgsZD7KHnvBRLadAQ').then((body) => {
 	console.log(body)
 })
