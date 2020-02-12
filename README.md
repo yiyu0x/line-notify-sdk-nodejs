@@ -21,16 +21,17 @@ Notification 系列則是只需要有 token 即可使用，如下：
 - POST https://notify-api.line.me/api/revoke
     - *sdk.revoke_token(token)*
 
-# 安裝
+# 安裝 Installation
 
 `npm install line-notify-sdk`
 
-# 使用說明
+# 使用說明 Usage
 
 ## Authentication
 
-### 初始化
+### 初始化 initialization
 
+Import module and initial sdk object. Constructor's arguments are all requied.
 引入模組以及初始化，參數必須填滿。
 
 ```javascript
@@ -38,19 +39,19 @@ const Notify_SDK = require('line-notify-sdk')
 const sdk = new Notify_SDK(process.env.client_id, process.env.client_secret, process.env.redirect_uri)
 ```
 
-### 設定/取得 認證連結
+### 設定/取得 認證連結 | set/get authentication link
 
 *sdk.set_Oauth_URL(response_type, scope, state)*
 
 return： [func]
 
-範例：
+Example ：
 ```javascript
 const get_Oauth_URL = sdk.set_Oauth_URL('code', 'notify', 'im_a_token')
 const Oauth_URL = get_Oauth_URL()
 ```
 
-### 取得使用者 token, 使用者名稱
+### 取得使用者 token, 使用者名稱 | get user token and user name
 *sdk.get_token_by_code(client_secret, client_code)*
 
 return： [promise] 回傳 [string]
@@ -60,7 +61,7 @@ return： [promise] 回傳 [string]
 
 return： [promise] 回傳 [object]
 
-範例：
+Example：
 ```javascript
 const token = await sdk.get_token_by_code(client_secret, client_code)
 //token: ZnCpYyTJq7_this_is_user_token_alxj8nWpzBl1
@@ -70,22 +71,23 @@ const info = await sdk.get_userinfo_by_token(token)
 
 ## Notification
 
-### 初始化
+### 初始化 initialization
 
-建構子參數可以為空。
+Import module and initial sdk object. Constructor's arguments are allow empty.
+引入模組並且初始化，建構子參數可以為空。
 
 ```javascript
 const Notify_SDK = require('line-notify-sdk')
 const sdk = new Notify_SDK()
 ```
 
-### 發送 notify
+### 發送 notification | send notification
 
 *sdk.notify(token, message, imageThumbnail, imageFullsize, stickerPackageId, stickerId, notificationDisabled)*
 
 return： [promise] 回傳 [object]
 
-範例：
+Example：
 ```javascript
 // notice a message
 sdk.notify(token, 'hello').then((body) => {
@@ -98,13 +100,13 @@ sdk.notify(token, 'Here is my sticker', '', '', 1, 1).then((body) => {
 })
 ```
 
-### 註銷 token
+### 註銷 token | revoke token
 
 *sdk.revoke_token(token)*
 
 return： [promise] 回傳 [object]
 
-範例：
+Example：
 ```javascript
 // revoke token
 sdk.revoke_token(token).then((body) => {
@@ -113,7 +115,7 @@ sdk.revoke_token(token).then((body) => {
 //若成功，會收到：與「XXX」的連動已解除
 ```
 
-# 其他
+# 其他 | others
 
 範例認證用的 server 在 `example/server.js`, 需要在該目錄建立 `.env` 並且設定：
 
