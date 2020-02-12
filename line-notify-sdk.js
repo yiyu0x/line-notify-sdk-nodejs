@@ -72,7 +72,7 @@ class LINE_Notify_SDK {
         })
     }
 	
-    notify(token, message) {
+    notify(token, message, imageThumbnail, imageFullsize, stickerPackageId, stickerId, notificationDisabled) {
         return new Promise((reslove, reject) => {
 	        request.post({
                 url: 'https://notify-api.line.me/api/notify',
@@ -80,7 +80,7 @@ class LINE_Notify_SDK {
 	                Authorization: `Bearer ${token}`
 	            },
 	            form: {
-	                message: message
+	                message, imageThumbnail, imageFullsize, stickerPackageId, stickerId, notificationDisabled
 	            }
 	        }, function(error, response, body) {
 	            if (!error && response.statusCode === 200) {
