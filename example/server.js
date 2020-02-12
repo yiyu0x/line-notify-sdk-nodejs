@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const Notify_SDK = require('./line-notify-sdk')
+const Notify_SDK = require('../line-notify-sdk')
 const sdk = new Notify_SDK(process.env.client_id, process.env.client_secret, process.env.redirect_uri)
 
 app.get('/cb', async (req, res) => {

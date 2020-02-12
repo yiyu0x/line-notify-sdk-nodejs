@@ -1,19 +1,22 @@
 {
-  "name": "line_notify_dev",
+  "name": "line-notify-sdk",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "🔩 A third party node.js line notify sdk.",
+  "main": "line-notify-sdk.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --fix *.js"
+    "lint": "eslint --fix *.js",
+    "server": "node example/server.js"
   },
   "pre-commit": ["lint"],
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yiyu0x/LINE-Notify-SDK"
+  },
+  "keywords": ["line", "line-notify", "line-notify-sdk"],
+  "author": "yiyu0x",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
     "request": "^2.88.0"
   },
   "devDependencies": {

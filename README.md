@@ -7,19 +7,23 @@
 Authentication 系列必須在初始化時設定好 `client_id`, `client_secret`, `redirect_uri`，對應之 API 如下：
 
 - GET  https://notify-bot.line.me/oauth/authorize 
-    - sdk.set_Oauth_URL(response_type, scope, state)
+    - *sdk.set_Oauth_URL(response_type, scope, state)*
 - GET  https://notify-api.line.me/api/status
-    - sdk.get_userinfo_by_token(token)
+    - *sdk.get_userinfo_by_token(token)*
 - POST https://notify-bot.line.me/oauth/token
-    - sdk.get_token_by_code(client_secret, client_code)
+    - *sdk.get_token_by_code(client_secret, client_code)*
 
 Notification 系列則是只需要有 token 即可使用，如下：
 
 - POST https://notify-api.line.me/api/notify
-    - sdk.notify(token, message, imageThumbnail, imageFullsize, stickerPackageId, stickerId, notificationDisabled)
+    - *sdk.notify(token, message, imageThumbnail, imageFullsize, stickerPackageId, stickerId, notificationDisabled)*
     （token 必填，其他選填即可。）
 - POST https://notify-api.line.me/api/revoke
-    - sdk.revoke_token(token)
+    - *sdk.revoke_token(token)*
+
+# 安裝
+
+`npm install line-notify-sdk`
 
 # 使用說明
 
@@ -30,7 +34,7 @@ Notification 系列則是只需要有 token 即可使用，如下：
 引入模組以及初始化，參數必須填滿。
 
 ```javascript
-const Notify_SDK = require('./line-notify-sdk')
+const Notify_SDK = require('line-notify-sdk')
 const sdk = new Notify_SDK(process.env.client_id, process.env.client_secret, process.env.redirect_uri)
 ```
 
@@ -71,7 +75,7 @@ const info = await sdk.get_userinfo_by_token(token)
 建構子參數可以為空。
 
 ```javascript
-const Notify_SDK = require('./line-notify-sdk')
+const Notify_SDK = require('line-notify-sdk')
 const sdk = new Notify_SDK()
 ```
 
@@ -111,7 +115,7 @@ sdk.revoke_token(token).then((body) => {
 
 # 其他
 
-範例認證用的 server 在 `server.js`, 需要在此目錄建立 `.env` 並且設定：
+範例認證用的 server 在 `example/server.js`, 需要在該目錄建立 `.env` 並且設定：
 
 ```
 client_id=
