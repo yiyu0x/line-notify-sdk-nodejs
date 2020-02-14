@@ -1,4 +1,4 @@
-# LINE-Notify-SDK
+# line-notify-sdk-nodejs
 
 官方尚未提供 Notify SDK，對於開發者來說非常不便。該專案為第三方 Node.js LINE Notify SDK。
 
