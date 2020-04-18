@@ -8,12 +8,18 @@
     "lint": "eslint --fix *.js",
     "server": "node example/server.js"
   },
-  "pre-commit": ["lint"],
+  "pre-commit": [
+    "lint"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/yiyu0x/LINE-Notify-SDK"
   },
-  "keywords": ["line", "line-notify", "line-notify-sdk"],
+  "keywords": [
+    "line",
+    "line-notify",
+    "line-notify-sdk"
+  ],
   "author": "yiyu0x",
   "license": "ISC",
   "dependencies": {
