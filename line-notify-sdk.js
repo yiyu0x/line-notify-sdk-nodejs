@@ -19,7 +19,7 @@ class LINE_Notify_SDK {
         this.check_args_is_set()
         
         const get_Oauth_URL = () => {            
-            const Oauth_URL = 'https://notify-bot.line.me/oauth/authorize?' + 
+            let Oauth_URL = 'https://notify-bot.line.me/oauth/authorize?' + 
 	        'response_type=' + response_type + 
 	        '&client_id=' + this.client_id + 
 	        '&redirect_uri=' + this.redirect_uri +
