@@ -1,8 +1,14 @@
 # line-notify-sdk-nodejs
 
+LINE official didn't provide SDK of Notify function. It's not convenient for developers. This project is a third-party LINE Notify SDK.
+
 官方尚未提供 Notify SDK，對於開發者來說非常不便。該專案為第三方 Node.js LINE Notify SDK。
 
+Official provides the API can classify by `Authentication` and `Notification`, so does this project.
+
 官方提供之 API 共分為 Authentication 以及 Notification 系列，此 SDK 也粗略分為這兩類。
+
+`Authentication` series needs to set `client_id`, `client_secret` and `redirect_uri` before initialization.
 
 Authentication 系列必須在初始化時設定好 `client_id`, `client_secret`, `redirect_uri`，對應之 API 如下：
 
