@@ -1,6 +1,6 @@
 {
   "name": "line-notify-sdk",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "🔩 A third party node.js line notify sdk.",
   "main": "line-notify-sdk.js",
   "scripts": {

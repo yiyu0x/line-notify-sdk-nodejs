@@ -14,7 +14,7 @@ class LINE_Notify_SDK {
             return true
     }
 
-    set_Oauth_URL(response_type, scope, state,form_post=null) {
+    set_Oauth_URL(response_type, scope, state, form_post=null) {
         
         this.check_args_is_set()
         
@@ -25,8 +25,9 @@ class LINE_Notify_SDK {
 	        '&redirect_uri=' + this.redirect_uri +
 	        '&scope=' + scope +
 	        '&state=' + state
+	    
 	    if (form_post) Oauth_URL += '&response_mode=form_post'
-		return Oauth_URL
+	    return Oauth_URL
         }
 
         return get_Oauth_URL
