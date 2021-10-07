@@ -1,5 +1,4 @@
 const request = require('request')
-
 class LINE_Notify_SDK {
     constructor(client_id, client_secret, redirect_uri) {
         this.client_id = client_id
@@ -44,7 +43,11 @@ class LINE_Notify_SDK {
 	            if (!error && response.statusCode === 200) {
 	                reslove(JSON.parse(body))
 	            } else {
-	                reject('[error] in get_userinfo_by_token()')
+	                try {
+						reject(JSON.parse(body))
+					} catch (e) {
+						reject('Unexpected Error in get_userinfo_by_token() : ',e)
+					}
 	            }
 	        })
         })
@@ -68,7 +71,11 @@ class LINE_Notify_SDK {
 	            if (!error && response.statusCode === 200) {
 	                reslove(JSON.parse(body).access_token)
 	            } else {
-	                reject('[error] in get_token_by_code()')
+	                try {
+						reject(JSON.parse(body))
+					} catch (e) {
+						reject('Unexpected Error in get_token_by_code() : ',e)
+					}
 	            }
 	        })
         })
@@ -88,7 +95,11 @@ class LINE_Notify_SDK {
 	            if (!error && response.statusCode === 200) {
 	                reslove(JSON.parse(body))
 	            } else {
-	                reject('[error] in notify()')
+					try {
+						reject(JSON.parse(body))
+					} catch (e) {
+						reject('Unexpected Error in notify() : ',e)
+					}
 	            }
 	        })
         })
@@ -105,7 +116,11 @@ class LINE_Notify_SDK {
                 if (!error && response.statusCode === 200) {
                     reslove(JSON.parse(body))
                 } else {
-                    reject('[error] in notify()')
+                    try {
+						reject(JSON.parse(body))
+					} catch (e) {
+						reject('Unexpected Error in revoke_token() : ',e)
+					}
                 }
             })
         })
