@@ -98,12 +98,12 @@ Example：
 // notice a message
 sdk.notify(token, 'hello').then((body) => {
     console.log(body)//{ status: 200, message: 'ok' }
-})
+}).catch((e)=>console.log(e))
 
 // notify a sticker
 sdk.notify(token, 'Here is my sticker', '', '', 1, 1).then((body) => {
     console.log(body)
-})
+}).catch((e)=>console.log(e))
 ```
 
 ### 註銷 token | revoke token
@@ -117,7 +117,7 @@ Example：
 // revoke token
 sdk.revoke_token(token).then((body) => {
 	console.log(body)//{ status: 200, message: 'ok' }
-})
+}).catch((e)=>console.log(e))
 //若成功，會收到：與「XXX」的連動已解除
 ```
 
