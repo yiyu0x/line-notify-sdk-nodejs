@@ -1,24 +1,28 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const Notify_SDK = require('../line-notify-sdk')
-const sdk = new Notify_SDK(process.env.client_id, process.env.client_secret, process.env.redirect_uri)
+const notifySDK = require('../line-notify-sdk')
+const notify = new notifySDK()
 
 app.get('/cb', async (req, res) => {
-    const client_code = req.query.code
+    const clientCode = req.query.code
     res.end()
-    const client_secret = process.env.client_secret
-    const token = await sdk.get_token_by_code(client_secret, client_code)
-    const info = await sdk.get_userinfo_by_token(token)
-    //{ status: 200, message: 'ok', targetType: 'USER', target: 'YOUR-USER-NAME' }
-    console.log(info, token)
+    console.log('Code : ',clientCode)
+
+    let token;
+    try {
+        token = await notify.getToken(clientCode)
+        console.log('Token : ',token)
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 app.get('/', (req, res) => {
-    const get_Oauth_URL = sdk.set_Oauth_URL('code', 'notify', 'im_a_token')
-    const Oauth_URL = get_Oauth_URL()
-    res.redirect(Oauth_URL) // default is 302 temporarily redirect.
+    const url = notify.generateOauthURL('RANDOMSTATE')
+    console.log(url)
+    res.redirect(url) // default is 302 temporarily redirect.
 })
 
 const port = 3000
-app.listen(port, () => console.log(`Please regist LINE Nofity on : http://localhost:${port}`))
+app.listen(port, () => console.log(`Please register LINE Nofity on : http://localhost:${port}`))
