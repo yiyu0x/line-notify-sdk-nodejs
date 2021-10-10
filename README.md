@@ -153,3 +153,11 @@ The API Rate Limit status, can be checked on the response header of the API.
 | X-RateLimit-ImageLimit | The limit of Uploading image per hour
 | X-RateLimit-ImageRemaining | The number of possible remaining Uploading image
 | X-RateLimit-Reset | The time when the limit is reset (UTC epoch seconds)
+
+# Contributing
+
+Thanks to all the people who already contributed!
+
+<a href="https://github.com/yiyu0x/line-notify-sdk-nodejs/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=yiyu0x/line-notify-sdk-nodejs" />
+</a>
