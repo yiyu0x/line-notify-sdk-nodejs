@@ -1,12 +1,12 @@
 # line-notify-sdk-nodejs
 
-> 本项目为第三方LINE Notify SDK。
+> 本專案為第三方 LINE Notify SDK。
 
-LINE官方未提供Notify功能的SDK。对开发者来说不方便。
+LINE 官方未提供 Notify 功能的 SDK。對開發者來說不方便。
 
-官方 LINE Notify API 提供了 `Authentication` 和 `Notification` 的端点，这个项目也是如此。
+官方 LINE Notify API 提供了 `Authentication` 和 `Notification` 的端點，這個專案也是如此。
 
-### 身份验证 API
+### 身份驗證 API
 
 1.`GET` https://notify-bot.line.me/oauth/authorize
     - *notify.generateOauthURL(state)*
@@ -21,17 +21,17 @@ LINE官方未提供Notify功能的SDK。对开发者来说不方便。
 - `POST` https://notify-api.line.me/api/revoke
     - *notify.revoke(token)*
 
-## 安装
+## 安裝
 
 `npm install line-notify-sdk`
 
 ## 用法
 
-## 验证
+## 驗證
 
 ### 1. 初始化
 
-导入模块和初始 sdk 对象。如果您的环境中有默认变量，则构造函数的参数是可选的。
+匯入模組和初始 sdk 物件。如果您的環境中有預設變數，則建構函式的引數是可選的。
 
 ```javascript
 const notifySDK = require('line-notify-sdk')
@@ -46,7 +46,7 @@ LINE_NOTIFY_CLIENT_SECRET=
 LINE_NOTIFY_REDIRECT_URI=
 ```
 
-### 2. 生成认证链接
+### 2. 生成認證連結
 
 > *notify.generateOauthURL(state)*
 
@@ -57,7 +57,7 @@ LINE_NOTIFY_REDIRECT_URI=
 const url = notify.generateOauthURL('somerandomstate')
 ```
 
-### 3. 从代码中获取令牌
+### 3. 從代碼中獲取令牌
 > *notify.getToken(clientCode)*
 
 `return` **[promise]** 解析为 **[string]**
@@ -80,7 +80,7 @@ const notifySDK = require('line-notify-sdk')
 const notify = new notifySDK()
 ```
 
-### 获取令牌状态
+### 獲取令牌狀態
 > *notify.getStatus(token)*
 
 `return` **[promise]** 解析为 **[object]**
@@ -94,7 +94,7 @@ const notify = new notifySDK()
     //错误：{状态：4xx，消息：'无效的访问令牌或来自LINE的其他消息'}
 }
 ```
-###发送通知
+### 發送通知
 
 > *notify.notify(token, message, imageThumbnail, imageFullsize,stickerPackageId,stickerId,notificationDisabled)*
 
