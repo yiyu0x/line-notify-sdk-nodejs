@@ -10,6 +10,7 @@ LINE 官方未提供 Notify 功能的 SDK。對開發者來說不方便。
 
 1.`GET` https://notify-bot.line.me/oauth/authorize
     - *notify.generateOauthURL(state)*
+
 2.`POST` https://notify-bot.line.me/oauth/token
     - *notify.getToken(client_code)*
     
@@ -39,7 +40,7 @@ const notify = new notifySDK(clientID,clientSecret,redirectURI)
 // 这些参数是可选的，如果你有
 // 环境中的默认变量
 ```
-默认环境变量
+默認環境變數
 ```md
 LINE_NOTIFY_CLIENT_ID=
 LINE_NOTIFY_CLIENT_SECRET=
