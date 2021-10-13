@@ -136,7 +136,7 @@ console.log(body)//{ status: 200, message: 'ok' }
 
 # API 速率限制
 
-> 参考：[LINE 文档](https://notify-bot.line.me/doc/en/)
+> 参考：[LINE 文件](https://notify-bot.line.me/doc/en/)
 
 每個服務上可以調用 API 的次数是有限制的。
 預設数量為 1000。
