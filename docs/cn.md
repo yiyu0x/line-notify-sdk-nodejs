@@ -74,7 +74,7 @@ const token = await notify.getToken(clientCode)
 
 ### 初始化
 
-导入模块和初始 sdk 对象。不需要环境变量来发送通知
+導入模組和初始化 SDK。不需要環境變數來發送通知
 
 ```javascript
 const notifySDK = require('line-notify-sdk')
@@ -84,46 +84,46 @@ const notify = new notifySDK()
 ### 獲取令牌狀態
 > *notify.getStatus(token)*
 
-`return` **[promise]** 解析为 **[object]**
+`return` **[promise]** 解析為 **[object]**
 
 例子：
 ```javascript
-尝试 {
+嘗試 {
     const info = await notify.getStatus(token)
     // info : { status: 200, message: 'ok', targetType: 'USER', target: 'yiyu0x' }
-} 捕捉（错误）{
-    //错误：{状态：4xx，消息：'无效的访问令牌或来自LINE的其他消息'}
+} 捕捉（錯誤）{
+    // 錯誤：{狀態：4xx，消息：'無效的訪問令牌或來自 LINE 的其他訊息'}
 }
 ```
 ### 發送通知
 
 > *notify.notify(token, message, imageThumbnail, imageFullsize,stickerPackageId,stickerId,notificationDisabled)*
 
-返回： [promise] 解析为 [object]
+返回： [promise] 解析為 [object]
 
 例子：
 ```javascript
-// 发送消息
+// 發送消息
 notify.notify(token, 'hello').then((body) => {
-    控制台日志（正文）
-    //{ 状态：200，消息：'ok' }
+    控制台日誌（正文）
+    //{ 狀態：200，消息：'ok' }
 }).catch((e)=>console.log(e))
 
-// 发送贴纸
-notify.notify(token, '这是我的贴纸', '', '', 1, 1).then((body) => {
-    控制台日志（正文）
+// 發送貼紙
+notify.notify(token, '這是我的貼紙', '', '', 1, 1).then((body) => {
+    控制台日誌（正文）
 }).catch((e)=>console.log(e))
 ```
 
-### 撤销令牌
+### 撤銷令牌
 
 > *notify.revoke(token)*
 
-`return` **[promise]** 解析为 **[object]**
+`return` **[promise]** 解析為 **[object]**
 
 例子：
 ```javascript
-// 撤销令牌
+// 撤銷令牌
 notify.revoke(token).then((body) => {
 console.log(body)//{ status: 200, message: 'ok' }
 }).catch((e)=>console.log(e))
@@ -131,24 +131,24 @@ console.log(body)//{ status: 200, message: 'ok' }
 
 # 其他
 
-- 在 `example/server.js` 中使用 Express 服务器的示例身份验证
+- 在 `example/server.js` 中使用 Express 伺服器的示例身份驗證
 - `example/notify.js` 中的示例通知
 
 # API 速率限制
 
 > 参考：[LINE 文档](https://notify-bot.line.me/doc/en/)
 
-每个服务上可以调用 API 的次数是有限制的。
-默认数量设置为 1000。
+每個服務上可以調用 API 的次数是有限制的。
+預設数量為 1000。
 
-限制是每个访问令牌。
+限制是每個訪問令牌。
 
-API 速率限制状态，可以在 API 的响应头中检查。
+API 速率限制狀態，可以在 API 的回應 header 中檢查。
 
 |标题名称 |描述
 |:----------:|:-------------
-| X-RateLimit-Limit |每小时API调用次数限制
-| X-RateLimit-Remaining |可能的剩余 API 调用次数
-| X-RateLimit-ImageLimit |每小时上传图片的限制
-| X-RateLimit-ImageRemaining |可能剩余上传图片的数量
-| X-RateLimit-Reset |限制重置的时间（UTC纪元秒）
+| X-RateLimit-Limit |每小時 API 調用次數限制
+| X-RateLimit-Remaining |可能的剩餘 API 調用次数
+| X-RateLimit-ImageLimit |每小時上傳圖片的限制
+| X-RateLimit-ImageRemaining |可能剩餘上傳圖片的數量
+| X-RateLimit-Reset |限制重置的時間（UTC 纪元秒）
