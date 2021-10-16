@@ -138,8 +138,8 @@ notify.revoke(token).then((body) => {
 ```typescript
 // your-project.ts
 
-import { notifySDK } from "line-notify-sdk";
-const notify = new notifySDK();
+import notifySDK from "line-notify-sdk";
+const notify = notifySDK();
 
 notify.generateOauthURL('somerandomstate');
 notify.getToken('clientCodeFromCallback');
