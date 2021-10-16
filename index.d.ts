@@ -32,21 +32,21 @@ declare class notifySDK {
     /**
      * GET - STATUS of the LINE Notify token
      * @param {string} token
-     * @returns {{[key:string]:string}}
+     * @returns {{[key:string]:any}}
      */
-    getStatus(token: string): {[key:string]:string};
+    getStatus(token: string): {[key:string]:any};
 
     /**
      * POST - REVOKE token
      * @param {string} token
-     * @returns {{[key:string]:string}}
+     * @returns {{[key:string]:any}}
      */
-    revoke(token: string): {[key:string]:string};
+    revoke(token: string): {[key:string]:any};
 
     /**
      * POST - Notify Message
      * @param {string} token
-     * @returns {{[key:string]:string}}
+     * @returns {{[key:string]:any}}
      */
-    notify(token: string, message: string, imageThumbnail: string, imageFullsize: string, stickerPackageId: string, stickerId: string, notificationDisabled: boolean): {[key:string]:string};
+    notify(token: string, message: string, imageThumbnail?: string, imageFullsize?: string, stickerPackageId?: string, stickerId?: string, notificationDisabled?: boolean): {[key:string]:any};
 }
