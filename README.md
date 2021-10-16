@@ -1,6 +1,6 @@
 # line-notify-sdk-nodejs
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/yiyu0x/line-notify-sdk-nodejs?style=for-the-badge) ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![npm](https://img.shields.io/npm/dw/line-notify-sdk?style=for-the-badge) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/yiyu0x/line-notify-sdk-nodejs?style=for-the-badge) [![GitHub license](https://img.shields.io/github/license/yiyu0x/line-notify-sdk-nodejs?style=for-the-badge)](https://github.com/yiyu0x/line-notify-sdk-nodejs/blob/master/LICENSE) [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fyiyu0x%2Fline-notify-sdk-nodejs)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fyiyu0x%2Fline-notify-sdk-nodejs)
+![npm](https://img.shields.io/npm/dw/line-notify-sdk?style=for-the-badge) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/yiyu0x/line-notify-sdk-nodejs?style=for-the-badge) [![GitHub license](https://img.shields.io/github/license/yiyu0x/line-notify-sdk-nodejs?style=for-the-badge)](https://github.com/yiyu0x/line-notify-sdk-nodejs/blob/master/LICENSE)
 
 - [Chinese Docs](docs/cn.md)
 
