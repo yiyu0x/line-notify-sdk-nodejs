@@ -24,8 +24,6 @@ class notifySDK {
 	checkArgsIsSet() {
 		if (this.clientID === undefined || this.clientSecret === undefined || this.redirectURI === undefined)
 			throw new Error('The arguments clientID, clientSecret, redirectURI is required');
-		else
-			return true;
 	};
 
 	/**

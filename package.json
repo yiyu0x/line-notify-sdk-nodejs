@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "🔩 A third party node.js line notify sdk.",
   "main": "index.js",
+  "types": "index.d.ts",
   "directories": {
     "example": "example"
   },
