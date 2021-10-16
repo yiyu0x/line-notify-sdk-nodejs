@@ -1,15 +1,52 @@
-declare function notifySDK(clientID?:string, clientSecret?:string, redirectURI?:string):notifySDK.notifySDK;
-
-declare namespace notifySDK {
-
-    interface notifySDK {
-        checkArgsIsSet():void;
-        generateOauthURL(state:string,form_post?:boolean):string;
-        getToken(clientCode:string):Promise<string|{[key: string]: string}>;
-        getStatus(tokrn:string):Promise<{[key: string]: string}>;
-        revoke(token:string):Promise<{[key: string]: string}>;
-        notify(token?:string,message?:string, imageThumbnail?:string, imageFullsize?:string, stickerPackageId?:string, stickerId?:string, notificationDisabled?:boolean):Promise<{[key: string]: string}>;
-    }
-}
-
 export = notifySDK;
+declare class notifySDK {
+    /**
+     * SDK Contructor. If no paramaters passed, loads from environment
+     * @param {string} clientID
+     * @param {string} clientSecret
+     * @param {string} redirectURI
+     */
+    constructor(clientID?: string, clientSecret?: string, redirectURI?: string);
+
+    /**
+     * Checks for availability of LINE Notify client variables
+     * @returns {void}
+     */
+    checkArgsIsSet(): void;
+
+    /**
+     * Generates OauthURL
+     * @param {string} state
+     * @param {boolean} formPost
+     * @returns {string}
+     */
+    generateOauthURL(state: string, formPost?: boolean): string;
+
+    /**
+     * GET - TOKEN
+     * @param {string} clientCode
+     * @returns {string}
+     */
+    getToken(clientCode: string): string;
+
+    /**
+     * GET - STATUS of the LINE Notify token
+     * @param {string} token
+     * @returns {{[key:string]:string}}
+     */
+    getStatus(token: string): {[key:string]:string};
+
+    /**
+     * POST - REVOKE token
+     * @param {string} token
+     * @returns {{[key:string]:string}}
+     */
+    revoke(token: string): {[key:string]:string};
+
+    /**
+     * POST - Notify Message
+     * @param {string} token
+     * @returns {{[key:string]:string}}
+     */
+    notify(token: string, message: string, imageThumbnail: string, imageFullsize: string, stickerPackageId: string, stickerId: string, notificationDisabled: boolean): {[key:string]:string};
+}
