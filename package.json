@@ -2,7 +2,8 @@
   "name": "line-notify-sdk",
   "version": "2.0.0",
   "description": "🔩 A third party node.js line notify sdk.",
-  "main": "line-notify-sdk.js",
+  "main": "index.js",
+  "types": "index.d.ts",
   "directories": {
     "example": "example"
   },

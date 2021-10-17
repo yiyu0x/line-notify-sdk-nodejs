@@ -1,5 +1,5 @@
 require('dotenv').config();
-const notifySDK = require('../line-notify-sdk');
+const notifySDK = require('../index');
 const notify = new notifySDK();
 
 ( async () => {

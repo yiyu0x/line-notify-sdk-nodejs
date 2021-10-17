@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const notifySDK = require('../line-notify-sdk')
+const notifySDK = require('../index');
 const notify = new notifySDK()
 
 app.get('/cb', async (req, res) => {
